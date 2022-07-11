@@ -8,7 +8,7 @@ const Incomplete = (props) => {
         return obj.id != e.currentTarget.id;
       })
     );
-    console.log(props.itemarr);
+   
   }
 
   // EDIT ITEM
@@ -31,7 +31,7 @@ const Incomplete = (props) => {
   // CHECK BOX
   const checked = (event) => {
     let id = event.currentTarget.id;
-    console.log(id);
+   
 
     props.textArr.map((item) =>
       id == item.id
@@ -50,8 +50,11 @@ const Incomplete = (props) => {
         return obj.id != event.currentTarget.id;
       })
     );
+    
   };
-  console.log(props.comp);
+  console.log(props.textArr)
+    console.log(props.comp)
+ 
   return (
     <div className="incomplete">
       <h3>ToDo</h3>

@@ -33,6 +33,10 @@ function App() {
         <Complete 
           comp = {comp}
           setComp = {setComp}
+          textArr = {itemarr}
+          setItemarr = {setItemarr}
+          count = {count}
+          setCount = {setCount}
         />
       </div>
     </div>
