@@ -31,6 +31,10 @@ body{
   outline: none;
   font-size: 18px;
 }
+
+.txt:-autofill{
+  background-color:#fbc531;
+}
 h3{
   margin: 20px 0;
 }
@@ -41,13 +45,18 @@ h3{
   margin: 5px 0;
   overflow: hidden;
 }
-.task .checkbox{
+.task .check{
   margin-right: 10px;
 }
 .task .btn{
   float: right;
   margin-left: 20px;
   cursor: pointer;
+  border: none;
+  
+}
+.task .btn i{
+  background-color: none;
 }
 
 .complete .task{
@@ -58,4 +67,7 @@ h3{
   border: none;
   background: none;
   color: none;
+}
+input:-webkit-autofill {
+  background-color: #2a2a2a !important; 
 }
