@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-
 const Todo = (props) => {
-  
   const [data, setData] = useState("");
   const [button, setButton] = useState("ADD");
   const [editData, setEditData] = useState(false);
@@ -23,6 +21,7 @@ const Todo = (props) => {
             return item;
           }),
         ]);
+        setEditData(false);
       } else {
         props.setTodoList([
           ...props.todoList,
@@ -54,7 +53,7 @@ const Todo = (props) => {
   // DELETE FUNCTIONALITY
   const remove = (event) => {
     props.setTodoList(
-        props.todoList.filter((item, index) => {
+      props.todoList.filter((item, index) => {
         return index != event.currentTarget.id;
       })
     );
@@ -64,88 +63,88 @@ const Todo = (props) => {
   const checked = (event) => {
     // debugger;
     props.setTodoList(
-        props.todoList.filter((item, index) => {
+      props.todoList.filter((item, index) => {
         if (event.currentTarget.id == index) {
-          item.status = "Complete"
-          return item
+          item.status = "Complete";
+          return item;
         }
         return item;
       })
     );
   };
 
-  const checkedComp = (event) =>{
+  const checkedComp = (event) => {
     props.setTodoList(
-        props.todoList.filter((item, index) => {
+      props.todoList.filter((item, index) => {
         if (event.currentTarget.id == index) {
-          item.status = "incomplete"
-          return item
+          item.status = "incomplete";
+          return item;
         }
         return item;
       })
     );
-  }
+  };
   console.log(props.todoList);
   return (
-   <>
+    <>
       <div className="add">
-      <input
-        type="text"
-        placeholder="Add a Task"
-        className="txt"
-        id="inputText"
-        onChange={(event) =>setData(event.target.value)}
-        value={data}
-      />
-      <button onClick={add}>
-        <i className="fas fa-plus"></i>
-      </button>
-    </div>
+        <input
+          type="text"
+          placeholder="Add a Task"
+          className="txt"
+          id="inputText"
+          onChange={(event) => setData(event.target.value)}
+          value={data}
+        />
+        <button onClick={add}>
+          <i className="fas fa-plus"></i>
+        </button>
+      </div>
 
-    <div className="incomplete">
-      <h3>ToDo</h3>
-      {props.todoList.map((item, index) => {
-        return item.status == "incomplete" ? (
-          <div className="task" key={index}>
-            <input
-              className="check"
-              id={index}
-              type="checkbox"
-              onClick={checked}
-            />
-            {item.data}
-            <button className="btn" id={index} onClick={remove}>
-              <i className="fas fa-trash-alt"></i>
-            </button>
-            <button className="btn" id={index} onClick={edit}>
-              <i className="fas fa-pencil"></i>
-            </button>
-          </div>
-        ) : null;
-      })}
-    </div>
+      <div className="incomplete">
+        <h3>ToDo</h3>
+        {props.todoList.map((item, index) => {
+          return item.status == "incomplete" ? (
+            <div className="task" key={index}>
+              <input
+                className="check"
+                id={index}
+                type="checkbox"
+                onClick={checked}
+              />
+              {item.data}
+              <button className="btn" id={index} onClick={remove}>
+                <i className="fas fa-trash-alt"></i>
+              </button>
+              <button className="btn" id={index} onClick={edit}>
+                <i className="fas fa-pencil"></i>
+              </button>
+            </div>
+          ) : null;
+        })}
+      </div>
 
-    <div className="complete">
-      <h3>Completed</h3>
-      {props.todoList.map((item, index) => {
-        return item.status == "Complete" ? (
-          <div className="task" key={index}>
-            <input
-              type="checkbox"
-              name=""
-              className="check"
-              id={index}
-              onClick={checkedComp}
-            />
-            <del>{item.data}</del>
-            <button className="btn">
-              <i className="fas fa-trash-alt" id={index} onClick={remove}></i>
-            </button>
-          </div>
-        ) : null;
-      })}
-    </div>
-      </>
+      <div className="complete">
+        <h3>Completed</h3>
+        {props.todoList.map((item, index) => {
+          return item.status == "Complete" ? (
+            <div className="task" key={index}>
+              <input
+                type="checkbox"
+                name=""
+                className="check"
+                id={index}
+                onClick={checkedComp}
+              />
+              <del>{item.data}</del>
+              <button className="btn">
+                <i className="fas fa-trash-alt" id={index} onClick={remove}></i>
+              </button>
+            </div>
+          ) : null;
+        })}
+      </div>
+    </>
   );
 };
 
